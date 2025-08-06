@@ -2,14 +2,25 @@
 
 Atualizado em: 2025-08-06 • Versão: 1.0
 
-Sumário
+## Sumário
 
 - [Contexto/Objetivo](#contextoobjetivo)
-- [Pré-requisitos](#pré-requisitos)
+- [Pré-requisitos](#pre-requisitos)
 - [Passo a passo](#passo-a-passo)
+  - [1) Verificar versões do Python e pip](#1-verificar-versoes-do-python-e-pip)
+  - [2) Criar o ambiente virtual (venv)](#2-criar-o-ambiente-virtual-venv)
+  - [3) Ativar o ambiente virtual](#3-ativar-o-ambiente-virtual)
+  - [4) Desativar o ambiente virtual](#4-desativar-o-ambiente-virtual)
+  - [5) Atualizar pip (dentro do venv ativo)](#5-atualizar-pip-dentro-do-venv-ativo)
+  - [6) Instalar dependências do projeto](#6-instalar-dependencias-do-projeto)
+  - [7) Adicionar/atualizar dependências e congelar](#7-adicionaratualizar-dependencias-e-congelar)
+  - [8) Atualizar requirements para últimas versões compatíveis](#8-atualizar-requirements-para-ultimas-versoes-compativeis)
+  - [9) Verificar se pip/python apontam para o venv](#9-verificar-se-pippython-apontam-para-o-venv)
+  - [10) Rodar scripts/comandos no venv](#10-rodar-scriptscomandos-no-venv)
+  - [11) Remover/recriar o venv (quando necessário)](#11-removerrecriar-o-venv-quando-necessario)
 - [Armadilhas comuns](#armadilhas-comuns)
 - [Troubleshooting](#troubleshooting)
-- [Referências](#referências)
+- [Referências](#referencias)
 
 ## Contexto/Objetivo
 
