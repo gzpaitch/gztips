@@ -19,7 +19,9 @@ Repositório de dicas, tutoriais e anotações rápidas para o dia a dia de dese
 - VPS e DevOps
   - [VPS.md](./VPS.md)
 - Git e Branching
-  - [GITHUB - BRANCH.MD](./GITHUB%20-%20BRANCH.MD)
+  - [GITHUB.MD](./GITHUB.MD)
+- Python
+  - [PYTHON.md](./PYTHON.md)
 - Templates e Convenções
   - [TEMPLATE - GUIA.md](./TEMPLATE%20-%20GUIA.md)
 
@@ -31,6 +33,9 @@ Repositório de dicas, tutoriais e anotações rápidas para o dia a dia de dese
 - Git e Branching:
   - Fluxos de trabalho, convenções, criação/gerenciamento de branches
   - Arquivo: [GITHUB - BRANCH.MD](./GITHUB%20-%20BRANCH.MD)
+- Python:
+  - Ambientes virtuais (venv), ativação, atualização de pip e manutenção de requirements
+  - Arquivo: [GUIA - PYTHON VENV.md](./GUIA%20-%20PYTHON%20VENV.md)
 
 ## Estrutura sugerida (guides)
 
@@ -79,5 +84,6 @@ Este repositório é público e voltado a estudo/consulta. Use o conteúdo por s
 ## Links rápidos
 
 - [VPS.md](./VPS.md)
-- [GITHUB - BRANCH.MD](./GITHUB%20-%20BRANCH.MD)
+- [GITHUB.MD](./GITHUB.MD)
+- [PYTHON.md](./PYTHON.md)
 - [TEMPLATE - GUIA.md](./TEMPLATE%20-%20GUIA.md)
