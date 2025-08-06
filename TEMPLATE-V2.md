@@ -182,5 +182,3 @@ Adicione erros específicos com soluções testadas conforme o tema do guia.
 - Prefira comandos simples, exemplos reais e explicações úteis.
 
 ---
-
-Se quiser, posso criar um arquivo `.md` com esse conteúdo para você começar no repositório. Deseja isso?
