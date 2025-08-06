@@ -14,6 +14,15 @@ Repositório de dicas, tutoriais e anotações rápidas para o dia a dia de dese
 - Utilize a busca do GitHub/VSCode para encontrar termos específicos.
 - Copie os trechos necessários e adapte ao seu contexto.
 
+## Índice de Tópicos
+
+- VPS e DevOps
+  - [VPS.md](./VPS.md)
+- Git e Branching
+  - [GITHUB - BRANCH.MD](./GITHUB%20-%20BRANCH.MD)
+- Templates e Convenções
+  - [TEMPLATE - GUIA.md](./TEMPLATE%20-%20GUIA.md)
+
 ## Tópicos atuais
 
 - VPS e DevOps básico:
@@ -71,3 +80,4 @@ Este repositório é público e voltado a estudo/consulta. Use o conteúdo por s
 
 - [VPS.md](./VPS.md)
 - [GITHUB - BRANCH.MD](./GITHUB%20-%20BRANCH.MD)
+- [TEMPLATE - GUIA.md](./TEMPLATE%20-%20GUIA.md)

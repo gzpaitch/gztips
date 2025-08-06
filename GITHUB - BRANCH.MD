@@ -1,5 +1,15 @@
 # Tutorial: Como Manter suas Branches Git Locais Sincronizadas
 
+Guia prático para limpar branches locais no Git: remova branches já deletadas no remoto e branches apenas locais, mantendo o repositório organizado.
+
+Atualizado em: 2025-08-06 • Versão: 1.0
+
+Sumário
+
+- [Cenário Comum](#cenário-comum)
+- [1. Removendo Branches Locais que Foram Deletadas no Remoto](#1-removendo-branches-locais-que-foram-deletadas-no-remoto)
+- [2. Removendo Todas as Branches que São Apenas Locais (Automático)](#2-removendo-todas-as-branches-que-são-apenas-locais-automático)
+
 Este tutorial explica como limpar seu repositório local, removendo branches que não existem mais no repositório remoto (GitHub) ou que foram criadas apenas localmente e nunca enviadas.
 
 ## Cenário Comum

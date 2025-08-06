@@ -1,5 +1,19 @@
 # 🧼 VPS Docker + EasyPanel — Guia de Limpeza, Otimização e Automação
 
+Guia prático para diagnóstico, limpeza e automação em VPS com Docker e EasyPanel. Foco em liberar espaço, padronizar manutenção e evitar recorrência de problemas.
+
+Atualizado em: 2025-08-06 • Versão: 1.0
+
+Sumário
+
+- [Visão Geral](#-visão-geral)
+- [Diagnóstico de Uso de Disco](#-diagnóstico-de-uso-de-disco)
+- [Limpeza de Logs do Sistema](#-limpeza-de-logs-do-sistema)
+- [Docker: Verificação e Limpeza](#-docker-verificação-e-limpeza)
+- [Crontab: Automatizando as Limpezas](#-crontab-automatizando-as-limpezas)
+- [Dicas Extras](#-dicas-extras)
+- [Melhorias Futuras](#-melhorias-futuras)
+
 ## 🧠 Visão Geral
 
 Este guia documenta o processo de diagnóstico, limpeza e automação realizado em uma VPS com Docker e EasyPanel para resolver problemas de espaço em disco e melhorar a manutenção.
