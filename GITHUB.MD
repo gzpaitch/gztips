@@ -63,7 +63,6 @@ Ao final, você terá executado comandos para sincronizar com o remoto, remover 
 Sincroniza com o remoto, remove referências de tracking obsoletas e apaga branches locais marcadas como [gone].
 
 ```powershell
-# PowerShell
 git fetch -p; git branch -vv | Where-Object { $_ -match ": gone]" } | ForEach-Object { $_.Trim().Split(' ')[0] } | ForEach-Object { if ($_.Length -gt 0) { git branch -d $_ } }
 ```
 
@@ -87,7 +86,6 @@ O que acontece:
 Apaga todas as branches sem vínculo remoto e que não são a branch atual.
 
 ```powershell
-# PowerShell
 git branch -vv | Where-Object { ($_ -notmatch '\[') -and ($_ -notmatch '\*') } | ForEach-Object { $_.Trim().Split(' ')[0] } | ForEach-Object { if ($_.Length -gt 0) { git branch -D $_ } }
 ```
 
