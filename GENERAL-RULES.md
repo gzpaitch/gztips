@@ -20,7 +20,7 @@ Always start with **pseudocode** (step-by-step), **define dependencies**, risks,
 - **Names, comments, and docs in English (US)**.
 - **No TODOs/PLACEHOLDERs** in merges to `main`.
 - **Complete imports**, clear and consistent naming.
-- If unsure, **state explicitly** in the PR (don’t guess).
+- If unsure, **state explicitly** (don’t guess).
 
 ### Security & Privacy by Default
 
