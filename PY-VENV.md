@@ -68,19 +68,19 @@ Escolha um nome (recomendado `.venv` ou `venv`):
 
 ```bash
 # Windows (PowerShell/CMD)
-py -m venv .venv
+py -m venv venv
 
 # macOS/Linux
-python3 -m venv .venv
+python3 -m venv venv
 ```
 
-Isso criará a pasta `.venv` com um Python isolado.
+Isso criará a pasta `venv` com um Python isolado.
 
 ### 3) Ativar o ambiente virtual
 
 ```bash
 # Windows PowerShell
-.\.venv\Scripts\Activate.ps1
+.\venv\Scripts\Activate.ps1
 
 # Windows CMD
 .\.venv\Scripts\activate.bat
