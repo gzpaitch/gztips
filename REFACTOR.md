@@ -1,5 +1,9 @@
 # Refactor Guidelines
 
+```txt
+Reorganize the code structure for clarity and maintainability. Split logic into smaller, more specialized components. Relocate code fragments into more appropriate files/folders when needed. Apply modularization principles to optimize the architecture (Single Responsibility, Separation of Concerns, DRY, minimal coupling, clear module boundaries).
+```
+
 Refactor the file using this document as the reference, applying the improvements below:
 
 1. Reorganize the code structure for clarity and maintainability.

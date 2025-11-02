@@ -31,7 +31,11 @@
     },
     "dart": {
       "command": "dart",
-      "args": ["mcp-server", "--force-roots-fallback"]
+      "args": ["mcp-server"]
+    },
+    "next-devtools": {
+      "command": "npx",
+      "args": ["-y", "next-devtools-mcp@latest"]
     },
     "TestSprite": {
       "command": "npx",
