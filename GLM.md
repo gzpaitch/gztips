@@ -1,101 +1,117 @@
 # GLM
 
-## Prompt para Remoção de Servidor Customizado e Prisma de Projetos Next.js
+## Table of Contents
 
-**Objetivo:** Converter um projeto Next.js que usa servidor customizado e Prisma para um projeto Next.js padrão sem dependências de servidor ou banco de dados.
+- [Overview](#overview)
+- [Initial Analysis](#initial-analysis)
+- [Server Files Removal](#server-files-removal)
+- [Prisma Files Removal](#prisma-files-removal)
+- [Package.json Update](#packagejson-update)
+- [References Cleanup](#references-cleanup)
+- [Directory Cleanup](#directory-cleanup)
+- [Hot Reload Fix](#hot-reload-fix)
+- [Testing and Validation](#testing-and-validation)
+- [Expected Result](#expected-result)
+- [Essential Commands](#essential-commands)
 
-**Instruções:**
+## Overview
 
-1. **Análise Inicial:**
+**Objective:** Convert a Next.js project using a custom server and Prisma to a standard Next.js project without server or database dependencies.
 
-   - Identifique todos os arquivos relacionados ao servidor customizado (ex: `server.ts`, `socket.ts`)
-   - Localize todos os arquivos e diretórios do Prisma (`prisma/`, `db.ts`, arquivos `.db`)
-   - Verifique dependências no `package.json` relacionadas a servidor e banco de dados
+## Initial Analysis
 
-2. **Remoção de Arquivos do Servidor:**
+- Identify all custom server-related files (e.g., `server.ts`, `socket.ts`)
+- Locate all Prisma files and directories (`prisma/`, `db.ts`, `.db` files)
+- Check `package.json` dependencies related to server and database
 
-   - Remova o arquivo principal do servidor (geralmente `server.ts` na raiz)
-   - Remova arquivos de configuração de Socket.IO (`socket.ts`, `socketio.ts`)
-   - Remova exemplos ou páginas que dependem do WebSocket/Socket.IO
+## Server Files Removal
 
-3. **Remoção de Arquivos do Prisma:**
+- Remove main server file (usually `server.ts` in root)
+- Remove Socket.IO configuration files (`socket.ts`, `socketio.ts`)
+- Remove examples or pages that depend on WebSocket/Socket.IO
 
-   - Delete o diretório `prisma/` completo
-   - Remova arquivos de configuração do banco (`db.ts`, `database.ts`)
-   - Delete arquivos de banco de dados locais (`.db`, `.sqlite`)
+## Prisma Files Removal
 
-4. **Atualização do package.json:**
+- Delete the complete `prisma/` directory
+- Remove database configuration files (`db.ts`, `database.ts`)
+- Delete local database files (`.db`, `.sqlite`)
 
-   - **Scripts a remover/substituir:**
+## Package.json Update
 
-     - `"dev": "nodemon server.ts"` → `"dev": "next dev"`
-     - `"start": "tsx server.ts"` → `"start": "next start"`
-     - Remover todos os scripts `db:*` (push, migrate, studio, etc.)
+**Scripts to remove/replace:**
 
-   - **Dependências a remover:**
-     - `@prisma/client`
-     - `prisma`
-     - `socket.io`
-     - `socket.io-client`
-     - `tsx` (se usado apenas para servidor)
-     - `nodemon` (se usado apenas para servidor)
+- `"dev": "nodemon server.ts"` → `"dev": "next dev"`
+- `"start": "tsx server.ts"` → `"start": "next start"`
+- Remove all `db:*` scripts (push, migrate, studio, etc.)
 
-5. **Limpeza de Referências:**
+**Dependencies to remove:**
 
-   - Busque e remova imports de arquivos deletados
-   - Remova referências a Socket.IO client
-   - Delete páginas/componentes que dependem de WebSocket
-   - Remova variáveis de ambiente relacionadas ao banco (`DATABASE_URL`)
+- `@prisma/client`
+- `prisma`
+- `socket.io`
+- `socket.io-client`
+- `tsx` (if used only for server)
+- `nodemon` (if used only for server)
 
-6. **Limpeza de Diretórios:**
+## References Cleanup
 
-   - Remova diretórios vazios (`db/`, `prisma/`, `examples/websocket/`)
-   - Use comandos como `Remove-Item -Path "db", "prisma", "examples" -Recurse -Force`
+- Search and remove imports from deleted files
+- Remove Socket.IO client references
+- Delete pages/components that depend on WebSocket
+- Remove database-related environment variables (`DATABASE_URL`)
 
-7. **Correção do Hot Reload (next.config.ts):**
+## Directory Cleanup
 
-   - **Problema:** Após remover o servidor customizado, o hot reload pode não funcionar
-   - **Causa:** Configurações no `next.config.ts` que desabilitam o hot reload para integração com nodemon
-   - **Solução:**
-     - Remova configurações `webpack` que ignoram mudanças de arquivo:
-       ```typescript
-       webpack: (config) => {
-         config.watchOptions = {
-           ignored: ["**/*"], // ← REMOVER ESTA LINHA
-         };
-         return config;
-       };
-       ```
-     - Altere `reactStrictMode: false` para `reactStrictMode: true`
-     - Remova comentários sobre desabilitar hot reload
-   - **Teste:** Faça uma mudança em qualquer arquivo e verifique se recompila automaticamente
+- Remove empty directories (`db/`, `prisma/`, `examples/websocket/`)
+- Use commands like `Remove-Item -Path "db", "prisma", "examples" -Recurse -Force`
 
-8. **Teste e Validação:**
-   - Limpe `node_modules` e reinstale dependências: `pnpm install`
-   - Teste o build: `pnpm build`
-   - Teste o servidor de desenvolvimento: `pnpm dev`
-   - Verifique se a aplicação carrega corretamente no navegador
-   - **Teste o hot reload:** Faça uma mudança no código e confirme que recompila automaticamente
+## Hot Reload Fix
 
-**Resultado Esperado:**
+**Problem:** After removing the custom server, hot reload may not work
 
-- Projeto Next.js padrão funcionando sem servidor customizado
-- Sem dependências de banco de dados ou Prisma
-- Scripts padrão do Next.js no package.json
-- Aplicação funcionando corretamente em modo de desenvolvimento e produção
-- **Hot reload funcionando corretamente** (mudanças no código refletidas automaticamente)
+**Cause:** Settings in `next.config.ts` that disable hot reload for nodemon integration
 
-**Comandos Essenciais:**
+**Solution:**
+
+- Remove `webpack` configurations that ignore file changes:
+  ```typescript
+  webpack: (config) => {
+    config.watchOptions = {
+      ignored: ["**/*"], // ← REMOVE THIS LINE
+    };
+    return config;
+  };
+  ```
+- Change `reactStrictMode: false` to `reactStrictMode: true`
+- Remove comments about disabling hot reload
+
+**Test:** Make a change to any file and verify it recompiles automatically
+
+## Testing and Validation
+
+- Clean `node_modules` and reinstall dependencies: `pnpm install`
+- Test the build: `pnpm build`
+- Test the development server: `pnpm dev`
+- Verify the application loads correctly in the browser
+- **Test hot reload:** Make a code change and confirm it recompiles automatically
+
+## Expected Result
+
+- Standard Next.js project running without custom server
+- No database or Prisma dependencies
+- Standard Next.js scripts in package.json
+- Application working correctly in development and production mode
+- **Hot reload working correctly** (code changes reflected automatically)
+
+## Essential Commands
 
 ```bash
-# Limpeza
+# Cleanup
 Remove-Item -Path "node_modules", "package-lock.json" -Recurse -Force
 Remove-Item -Path "db", "prisma", "examples" -Recurse -Force
 
-# Reinstalação e teste
+# Reinstall and test
 pnpm install
 pnpm build
 pnpm dev
 ```
-
----

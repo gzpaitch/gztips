@@ -2,6 +2,27 @@
 
 Este documento contém as configurações iniciais recomendadas para projetos Next.js com TypeScript, incluindo otimizações, dicas e melhores práticas.
 
+## Sumário
+
+1. [Estrutura de Arquivos](#1-estrutura-de-arquivos-recomendada)
+2. [Configurações de Arquivos](#2-configurações-de-arquivos)
+   - [next.config.js](#nextconfigjs)
+   - [tsconfig.json](#tsconfigjson)
+   - [package.json](#packagejson)
+   - [.eslintrc.json](#eslintrcjson)
+   - [.gitignore](#gitignore)
+   - [.prettierrc](#prettierrc)
+3. [Melhores Práticas](#3-melhores-práticas)
+   - [Otimizações de Desempenho](#otimizações-de-desempenho)
+   - [Tipagem TypeScript](#tipagem-typescript)
+   - [Estrutura de Componentes](#estrutura-de-componentes)
+   - [Segurança](#segurança)
+   - [Padrões de Código](#padrões-de-código)
+4. [Scripts e Comandos Úteis](#4-scripts-e-comandos-úteis)
+5. [Configurações Adicionais](#5-configurações-adicionais)
+   - [Husky e lint-staged](#husky-e-lint-staged)
+   - [Testes com Jest](#testes-com-jest)
+
 ## 1. Estrutura de Arquivos Recomendada
 
 ```
@@ -23,7 +44,9 @@ project/
 └── README.md
 ```
 
-## 2. next.config.js
+## 2. Configurações de Arquivos
+
+### next.config.js
 
 Configurações recomendadas para otimização e segurança:
 
@@ -49,6 +72,21 @@ const nextConfig = {
       "image/png",
       "image/gif",
       "image/svg+xml",
+    ],
+    // Permite carregar imagens de qualquer domínio externo
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**', // Wildcard para todos os hostnames
+        port: '',
+        pathname: '**', // Wildcard para todos os paths
+      },
+      {
+        protocol: 'http',
+        hostname: '**',
+        port: '',
+        pathname: '**',
+      },
     ],
   },
 
@@ -91,9 +129,9 @@ const nextConfig = {
 module.exports = nextConfig;
 ```
 
-## 3. tsconfig.json
+### tsconfig.json
 
-Configurações TypeScript recomendadas:
+Configurações TypeScript recomendadas com verificações estritas:
 
 ```json
 {
@@ -121,27 +159,27 @@ Configurações TypeScript recomendadas:
     "paths": {
       "@/*": ["*"]
     },
-    "removeComments": true, // Remove comentários no código compilado
-    "noUnusedLocals": true, // Sinaliza variáveis locais não utilizadas
-    "noUnusedParameters": true, // Sinaliza parâmetros não utilizados
-    "strictNullChecks": true, // Verificações estritas de null/undefined
-    "strictFunctionTypes": true, // Verificações estritas de tipos de função
-    "strictBindCallApply": true, // Verificações estritas para bind/call/apply
-    "noImplicitAny": true, // Não permite 'any' implícito
-    "noImplicitReturns": true, // Verifica se todas as ramificações retornam valor
-    "alwaysStrict": true, // Adiciona 'use strict' em todos os arquivos
-    "exactOptionalPropertyTypes": true, // Tipos exatos para propriedades opcionais
-    "noFallthroughCasesInSwitch": true, // Verifica switch/case incompletos
-    "noUncheckedIndexedAccess": true, // Acesso a índices é verificado
-    "noImplicitOverride": true, // Requer 'override' para métodos sobrescritos
-    "verbatimModuleSyntax": true // Preserva import/export no JS emitido
+    "removeComments": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "alwaysStrict": true,
+    "exactOptionalPropertyTypes": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "verbatimModuleSyntax": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
 }
 ```
 
-## 4. package.json
+### package.json
 
 Scripts e dependências recomendadas:
 
@@ -157,10 +195,11 @@ Scripts e dependências recomendadas:
     "lint": "next lint",
     "type-check": "tsc --noEmit",
     "format": "prettier --write .",
-    "check-format": "prettier --check ."
+    "check-format": "prettier --check .",
+    "prepare": "husky install"
   },
   "dependencies": {
-    "next": "^14.0.0", // Atualize para a versão mais recente
+    "next": "^14.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "typescript": "^5.0.0"
@@ -178,7 +217,7 @@ Scripts e dependências recomendadas:
 }
 ```
 
-## 5. .eslintrc.json
+### .eslintrc.json
 
 Configurações ESLint recomendadas:
 
@@ -202,7 +241,7 @@ Configurações ESLint recomendadas:
 }
 ```
 
-## 6. .gitignore
+### .gitignore
 
 Configurações recomendadas para .gitignore:
 
@@ -238,13 +277,24 @@ yarn-debug.log*
 yarn-error.log*
 ```
 
-## 7. Dicas e Melhores Práticas
+## 3. Melhores Práticas
 
 ### Otimizações de Desempenho
 
 1. **Remover console.log em produção**: A configuração `removeConsole: true` remove todos os `console.log` em builds de produção, reduzindo o tamanho do bundle.
 
 2. **Otimizar imagens**: Use o componente `next/image` para otimização automática de imagens.
+   - **Imagens de domínios externos**: A configuração `remotePatterns` com wildcards (`**`) permite carregar imagens de qualquer domínio externo. Em produção, considere restringir a domínios específicos por segurança:
+     ```javascript
+     remotePatterns: [
+       {
+         protocol: 'https',
+         hostname: 'exemplo.com',
+         port: '',
+         pathname: '/images/**',
+       },
+     ]
+     ```
 
 3. **Code splitting**: Next.js faz code splitting automaticamente, mas você pode otimizar ainda mais com `next/dynamic` para importação condicional.
 
@@ -272,26 +322,27 @@ yarn-error.log*
 
 3. **Environment variables**: Use `.env` para armazenar credenciais e variáveis sensíveis.
 
-### Boas Práticas de Código
+### Padrões de Código
 
-1. **Padrão de nomenclatura**: Use camelCase para variáveis e funções, PascalCase para componentes.
+1. **Nomenclatura**: Use camelCase para variáveis e funções, PascalCase para componentes.
 
 2. **Componentes pequenos**: Prefira componentes pequenos e focados em uma única responsabilidade.
 
 3. **Documentação**: Comente código complexo e documente componentes importantes.
 
-### Scripts úteis
+## 4. Scripts e Comandos Úteis
 
-- `npm run dev`: Inicia o servidor de desenvolvimento
-- `npm run build`: Cria uma build de produção
-- `npm run start`: Inicia o servidor de produção
-- `npm run lint`: Executa o linter
-- `npm run type-check`: Verifica tipagem TypeScript
-- `npm run format`: Formata o código com Prettier
+- `pnpm dev`: Inicia o servidor de desenvolvimento
+- `pnpm build`: Cria uma build de produção
+- `pnpm start`: Inicia o servidor de produção
+- `pnpm lint`: Executa o linter
+- `pnpm type-check`: Verifica tipagem TypeScript
+- `pnpm format`: Formata o código com Prettier
+- `pnpm check-format`: Verifica formatação sem modificar arquivos
 
-## 8. Configurações Adicionais Opcionais
+## 5. Configurações Adicionais
 
-### Prettier (formatação de código)
+### .prettierrc
 
 Crie `.prettierrc`:
 
@@ -306,12 +357,12 @@ Crie `.prettierrc`:
 }
 ```
 
-### Husky e lint-staged (pré-commit hooks)
+### Husky e lint-staged
 
 Para garantir que o código esteja formatado e verificado antes de cada commit:
 
 ```bash
-npm install --save-dev husky lint-staged
+pnpm add -D husky lint-staged
 ```
 
 Adicione ao `package.json`:
@@ -327,13 +378,15 @@ Adicione ao `package.json`:
 }
 ```
 
-### Testes (opcional)
+### Testes com Jest
 
 Adicione Jest e React Testing Library:
 
 ```bash
-npm install --save-dev jest @testing-library/react @testing-library/jest-dom jsdom
+pnpm add -D jest @testing-library/react @testing-library/jest-dom jsdom
 ```
+
+---
 
 ## Conclusão
 

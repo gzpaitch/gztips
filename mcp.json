@@ -43,6 +43,10 @@
       "env": {
         "API_KEY": "your-api-key"
       }
+    },
+    "intlayer": {
+      "command": "npx",
+      "args": ["-y", "@intlayer/mcp"]
     }
   }
 }
