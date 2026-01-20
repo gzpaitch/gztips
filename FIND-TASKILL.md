@@ -17,6 +17,10 @@
 netstat -ano | findstr :PORTA
 ```
 
+```bash
+taskkill /F /PID NUMERO_DO_PID
+```
+
 **Explicação dos parâmetros:**
 
 - `netstat` - Comando que exibe conexões de rede ativas
