@@ -11,7 +11,7 @@
 
 ## Overview
 
-Reorganize the code structure for clarity and maintainability. Split logic into smaller, more specialized components/functions/classes. Relocate code fragments into more appropriate files/folders when needed. Apply modularization principles to optimize the architecture (Single Responsibility, Separation of Concerns, DRY, minimal coupling, clear module boundaries).
+Reorganize the code structure for clarity and maintainability. Split logic into smaller, more specialized components/functions/classes/types/hooks. Relocate code fragments into more appropriate files/folders when needed. Apply modularization principles to optimize the architecture (Single Responsibility, Separation of Concerns, DRY, minimal coupling, clear module boundaries).
 
 --
 
@@ -34,22 +34,18 @@ Create a cleaner, more modular structure that simplifies future maintenance and 
 ## Refactoring Steps
 
 1. **Reorganize Structure**
-
    - Analyze current code structure for clarity and maintainability issues
    - Identify opportunities for improved organization
 
 2. **Split Logic**
-
    - Break down complex components into smaller, specialized units
    - Extract reusable logic into dedicated functions/classes
 
 3. **Relocate Code**
-
    - Move code fragments to more appropriate files/folders
    - Align file structure with domain boundaries and feature ownership
 
 4. **Apply Modularization**
-
    - Implement Single Responsibility principle
    - Ensure Separation of Concerns
    - Reduce code duplication (DRY)
@@ -63,17 +59,14 @@ Create a cleaner, more modular structure that simplifies future maintenance and 
 ## Recommended Approach
 
 - **Map Responsibilities**
-
   - Document current responsibilities of each component/module
   - Identify seams where logic can be extracted
 
 - **Define Public APIs**
-
   - Create minimal, clear interfaces for each module/component
   - Hide implementation details behind well-defined boundaries
 
 - **Centralize Shared Logic**
-
   - Move shared utilities to common modules
   - Avoid circular dependencies
   - Create a clear dependency graph
@@ -86,22 +79,18 @@ Create a cleaner, more modular structure that simplifies future maintenance and 
 ## Acceptance Criteria
 
 - **No Functional Regressions**
-
   - All existing functionality preserved
   - Current behavior remains unchanged
 
 - **Clear Structure**
-
   - Components/modules have descriptive, intention-revealing names
   - Each unit has a single, well-defined responsibility
 
 - **Organized Layout**
-
   - File and folder structure reflects domain boundaries
   - Feature ownership is clear and logical
 
 - **Reduced Duplication**
-
   - Duplicated code eliminated or minimized
   - Shared logic centralized in common modules
 
