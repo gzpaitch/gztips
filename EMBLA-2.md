@@ -242,6 +242,55 @@ Para mostrar um slide por vez:
 - Se o bleed for só mobile, restaure o layout contido em `sm`, `md` ou `lg`.
 - Se estiver usando um wrapper utilitário de carousel, revise o espaçamento padrão antes de adicionar novas classes.
 
+### Quando a margem esquerda não abre
+
+Se o carousel continua com respiro visual na esquerda, o problema quase sempre está em uma destas camadas:
+
+- o `padding-left` externo não foi compensado
+- o `-mx-*` foi aplicado no nível errado
+- o track não tem margem negativa
+- o slide usa `px-*` em vez de `pl-*`
+- existe um wrapper intermediário com `container`, `max-w-*` ou `padding-left`
+
+Checklist de diagnóstico:
+
+1. identifique qual ancestral aplica o `px-*`
+2. compense esse mesmo nível com `-mx-*`
+3. garanta `overflow-hidden` no wrapper correto
+4. use track com `-ml-*`
+5. use slide com `pl-*`
+6. remova `gap-*` do track
+
+Padrão confiável:
+
+```tsx
+<div className="overflow-hidden">
+  <div className="-ml-5 flex">
+    {items.map((item, index) => (
+      <div key={index} className="min-w-0 flex-[0_0_86%] pl-5">
+        <Card />
+      </div>
+    ))}
+  </div>
+</div>
+```
+
+Padrão que costuma falhar:
+
+```tsx
+<div className="overflow-hidden">
+  <div className="flex gap-4">
+    {items.map((item, index) => (
+      <div key={index} className="basis-[86%] px-4">
+        <Card />
+      </div>
+    ))}
+  </div>
+</div>
+```
+
+Motivo: `gap-*` no track e `px-*` bilateral no slide costumam reintroduzir margem visual na borda inicial.
+
 ### Exemplo genérico
 
 ```tsx
