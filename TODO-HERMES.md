@@ -1,6 +1,3 @@
 # TODO HERMES
 
-[Testing] Concrede aque el successar copindo todo: 
-[Next Concrede el proceedor: 
-[Instruento Concrede el computer: 
-[Bread Concrede el developoriao: 
+- [ ] Sincronizar repositorios com Obsidian: atualizar arquivos .md de cada projeto no vault e revisar front matter
