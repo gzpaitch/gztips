@@ -1,0 +1,1 @@
+Verifique os comentários e o estado atual do https://github.com/gzpaitch/pixel-perfect-pixels/pull/7 -> Algo já foi alterado? Algo precisa ser alterado? Caso sim, analise a raiz do problema, identifique sua real relevância e defina a melhor solução (sendo ela nova ou disponível no comentário). Prossiga.
